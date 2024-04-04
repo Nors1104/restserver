@@ -1,0 +1,43 @@
+const { validationResult } = require("express-validator")
+const User = require("../models/user")
+const bcryptjs = require("bcryptjs")
+
+const userGet = (req, res) => {
+  res.json({ msg: "get user" })
+}
+const userPost = async (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(400).json(errors)
+  }
+
+  const { nombre, correo, password, rol } = req.body
+  const user = new User({ nombre, correo, password, rol })
+
+  // Encriptar la contraseña
+  const salt = bcryptjs.genSaltSync()
+  user.password = bcryptjs.hashSync(password, salt)
+  // verificar email existe
+  const existeEmail = await User.findOne({ correo })
+  if (existeEmail) {
+    return res.status(400).json({
+      msg: "Ese corre esta registrado",
+    })
+  }
+  // Guardar en BD
+  await user.save()
+  res.json({
+    user,
+  })
+}
+const userDelete = (req, res) => {
+  res.json({ msg: "delete user" })
+}
+const userPut = (req, res) => {
+  res.json({ msg: "put user" })
+}
+const userPatch = (req, res) => {
+  res.json({ msg: "patch user" })
+}
+
+module.exports = { userGet, userPost, userDelete, userPut, userPatch }
