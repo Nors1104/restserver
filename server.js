@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 const { dbConnection } = require("./databases/config")
 require("dotenv").config()
 
@@ -14,6 +15,7 @@ class Server {
     this.routes()
   }
   middlewares() {
+    this.app.use(cors())
     this.app.use(express.json())
     this.app.use(express.static("public"))
   }

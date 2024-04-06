@@ -1,0 +1,31 @@
+@url=https://restserver-pi.vercel.app/api/users
+
+### get users
+GET {{url}}
+
+### get users query params
+GET  {{url}}?limit=2
+
+### create users
+POST {{url}}
+Content-Type: application/json
+
+{
+  "nombre": "test16",
+  "correo": "test16@gmail.com",
+  "password": "123456",
+  "rol": "USER_ROLE" 
+}
+
+### borra usuario
+DELETE {{url}}/66070d6b8a4e45b44857c6c4
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjA3MGQ2YjhhNGU0NWI0NDg1N2M2YzQiLCJpYXQiOjE3MTE4MjY3NTksImV4cCI6MTcxMTgzMDM1OX0.Z4CV-ZJZ7G98_d825GJx-hjRg_1FMLYKRUmF20V4aw0
+
+### Auth user
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "correo": "test3@gmail.com",
+  "password": "123456"
+}
