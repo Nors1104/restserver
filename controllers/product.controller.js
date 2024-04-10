@@ -5,8 +5,13 @@ const productGet = async (req, res) => {}
 const productPost = async (req, res) => {
   const { nombre, estado, user, precio, category, descripcion, disponible } = req.body
   const product = new Product({ nombre, estado, user, precio, category, descripcion, disponible })
+
+  const productExist = await Product.findOne({ nombre })
+  if (productExist) {
+    return res.json({ error: "Error: el producto ya existe" })
+  }
   await product.save()
-  res.json({ category })
+  res.json({ product })
 }
 
 module.exports = {

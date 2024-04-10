@@ -9,6 +9,8 @@ class Server {
     this.port = process.env.PORT || 3000
     this.userPath = "/api/users"
     this.authPath = "/api/auth"
+    this.productPath = "/api/products"
+    this.categoryPath = "/api/categories"
 
     this.connectDb()
     this.middlewares()
@@ -28,6 +30,8 @@ class Server {
     // })
     this.app.use(this.authPath, require("./routes/auth"))
     this.app.use(this.userPath, require("./routes/user"))
+    this.app.use(this.productPath, require("./routes/product"))
+    this.app.use(this.categoryPath, require("./routes/category"))
   }
   listen() {
     this.app.listen(this.port, () => {

@@ -1,4 +1,4 @@
-@url=http://localhost:3000/api/users
+@url=http://localhost:3000/api
 
 ### get users
 GET {{url}}
@@ -7,12 +7,12 @@ GET {{url}}
 GET  {{url}}?limit=2
 
 ### create users
-POST {{url}}
+POST {{url}}/users/register
 Content-Type: application/json
 
 {
   "nombre": "test16",
-  "correo": "test16@gmail.com",
+  "correo": "test15@gmail.com",
   "password": "123456",
   "rol": "USER_ROLE" 
 }
@@ -28,4 +28,27 @@ Content-Type: application/json
 {
   "correo": "test3@gmail.com",
   "password": "123456"
+}
+
+### Create Product
+POST {{url}}/products
+Content-Type: application/json
+
+{
+  "nombre": "calabaza",
+  "user":"66070d6b8a4e45b44857c6c4",
+  "precio": 5,
+  "category":"6616c870c95db0340a719769" 
+
+}
+
+
+### Create  Category
+POST {{url}}/categories
+Content-Type: application/json
+
+{
+  "nombre": "verduras",
+  "user":"66070d6b8a4e45b44857c6c4"
+
 }
