@@ -52,3 +52,7 @@ Content-Type: application/json
   "user":"66070d6b8a4e45b44857c6c4"
 
 }
+
+### GET products
+GET {{url}}/products
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjA3MGQ3MDhhNGU0NWI0NDg1N2M2YzgiLCJpYXQiOjE3MTM4MDMyNDAsImV4cCI6MTcxMzgwNjg0MH0.yAeG7-NyvVEd3pGzirvGhA8h8EwQ453oZI_GcBizNv4

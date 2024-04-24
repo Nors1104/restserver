@@ -1,6 +1,12 @@
 const Product = require("../models/product")
 
-const productGet = async (req, res) => {}
+const productGet = async (req, res) => {
+  // 2 - busco los productos de ese usuario
+  // Product.find({})
+  //const products = await Product.find({ user: req.user.id })
+  const products = await Product.find({ user: req.user.id })
+  res.json({ products })
+}
 
 const productPost = async (req, res) => {
   const { nombre, estado, user, precio, category, descripcion, disponible } = req.body
